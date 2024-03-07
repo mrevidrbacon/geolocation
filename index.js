@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 
 const app = express();
-const PORT = 80;
+const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.json());
