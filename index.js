@@ -7,6 +7,7 @@ const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.json());
+app.use(express.static('public'))
 
 // Enable CORS
 app.use((req, res, next) => {
@@ -14,6 +15,10 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
+
 
 // Endpoint to receive and store data
 // Endpoint to receive and store data

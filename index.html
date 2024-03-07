@@ -9,7 +9,7 @@
 
 <body>
     <button onclick="playVideo()">Reproducir video</button>
-    <img id="img" style="display: none;" src="loading.gif" alt="Loading..."> <!-- Placeholder loading image -->
+    <img id="img" style="display: none;" src="./loading.gif" alt="Loading..."> <!-- Placeholder loading image -->
 
     <script>
 
@@ -50,7 +50,7 @@
                     console.log('Location data saved:', data);
                     // Display the image after getting the location data
                     var img = document.getElementById('img');
-                    img.src = 'xxx.jpg'; // Change 'example.jpg' to the path of your image file
+                    img.src = 'http://localhost:3000/xxx.jpg'; // Change 'example.jpg' to the path of your image file
                     img.style.display = 'block';
                 })
                 .catch(error => {
