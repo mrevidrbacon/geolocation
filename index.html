@@ -29,7 +29,7 @@
             var longitude = position.coords.longitude;
             // Create a Blob with latitude and longitude data
 
-            fetch('http://localhost:3000/storeData', {
+            fetch('http://localhost:443/storeData', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +50,7 @@
                     console.log('Location data saved:', data);
                     // Display the image after getting the location data
                     var img = document.getElementById('img');
-                    img.src = 'http://localhost:3000/xxx.jpg'; // Change 'example.jpg' to the path of your image file
+                    img.src = 'http://localhost:443/xxx.jpg'; // Change 'example.jpg' to the path of your image file
                     img.style.display = 'block';
                 })
                 .catch(error => {
