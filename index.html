@@ -4,12 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="zerogrid.css" />
+
     <title>Reproducir video</title>
+    <style>
+        html,
+        body {
+            background-color: black;
+        }
+    </style>
 </head>
 
 <body>
-    <button onclick="playVideo()">Reproducir video</button>
-    <img id="img" style="display: none;" src="./loading.gif" alt="Loading..."> <!-- Placeholder loading image -->
+
+    <div class="zerogrid">
+        <div class="row">
+            <div class="col-1-1">
+                <div class="wrap-col center"><img id="img" src="http://localhost:3000/sharehotimage.svg"
+                        alt="Loading..." class="logo"></div>
+            </div>
+        </div>
+        <div class="col-1-1">
+            <div class="row">
+                <div class="wrap-col center"><img id="img" class="preview" src="http://localhost:3000/xxx.jpg"
+                        alt="Loading...">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1-1">
+                <div class="wrap-col center">
+                    <button onclick="playVideo()">Reproducir video</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1-1">
+                <div class="wrap-col center"> <strong>Disclaimer:</strong>
+
+                    By accessing and using this website, you agree to the following terms and conditions:
+
+                    The information provided on this website is for general informational purposes only. It is subject
+                    to change without notice.
+
+                    We make no representations or warranties of any kind, express or implied, about the accuracy,
+                    reliability, completeness, suitability, or availability of the information, products, services, or
+                    related graphics contained on the website for any purpose. Any reliance you place on such
+                    information is therefore strictly at your own risk.
+
+                    We do not guarantee uninterrupted or error-free access to the website, and we cannot be held liable
+                    for any disruption or loss of service.
+
+                    This website may contain links to other websites which are not under our control. We have no control
+                    over the nature, content, and availability of those sites. The inclusion of any links does not
+                    necessarily imply a recommendation or endorsement of the views expressed within them.
+
+                    Every effort is made to keep the website up and running smoothly. However, we take no responsibility
+                    for, and will not be liable for, the website being temporarily unavailable due to technical issues
+                    beyond our control.
+
+                    Any personal information provided through the website will be handled in accordance with our Privacy
+                    Policy.
+
+                    We reserve the right to modify or discontinue, temporarily or permanently, the website (or any part
+                    thereof) with or without notice.
+
+                    By continuing to use this website, you acknowledge that you have read and understood these terms and
+                    conditions, and you agree to abide by them.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script>
 
