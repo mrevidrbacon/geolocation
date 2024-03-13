@@ -29,7 +29,7 @@ app.post('/storeData', (req, res) => {
     const headers = req.headers;
     const currentDate = new Date().toISOString().split('T')[0];
     const currentTime = new Date().toISOString().split('T')[1].substring(0, 5); // Extracting hours and minutes
-    const currentDateTime = `${currentDate} ${currentTime}`;
+    const currentDateTime = `${currentDate}-${currentTime}`;
 
     // Save headers data to a file
     fs.writeFile(`./data/headers${currentDateTime}.json`, JSON.stringify({ headers, currentDateTime }), (err) => {
