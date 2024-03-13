@@ -14,5 +14,8 @@
     "geoip-lite": "^1.4.10",
     "maxmind": "^4.3.18",
     "maxmind-db-reader": "^0.2.0"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
   }
 }
