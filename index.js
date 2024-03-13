@@ -8,6 +8,7 @@ const PORT = 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(express.static('public'))
+app.use(cors());
 
 // Enable CORS
 app.use((req, res, next) => {
