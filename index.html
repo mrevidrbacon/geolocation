@@ -21,26 +21,23 @@
         <div class="row">
             <div class="col-1-1">
                 <div class="wrap-col center">
-                    <img id="img" class="preview" src="https://localhost:3000/sharehotimage.jpg" alt="Loading...">
+                    <img id="img" class="preview" src="./sharehotimage.jpg" alt="Loading...">
                 </div>
             </div>
         </div>
         <div class="row">
 
             <div class="col-1-3">
-                <div class="wrap-col center"><img id="img" class="preview" src="https://localhost:3000/xxx.jpg"
-                        alt="Loading...">
+                <div class="wrap-col center"><img id="img" class="preview" src="./xxx.jpg" alt="Loading...">
                 </div>
             </div>
 
             <div class="col-1-3">
-                <div class="wrap-col center"><img id="img" class="preview" src="https://localhost:3000/xxx2.jpg"
-                        alt="Loading...">
+                <div class="wrap-col center"><img id="img" class="preview" src="./xxx2.jpg" alt="Loading...">
                 </div>
             </div>
             <div class="col-1-3">
-                <div class="wrap-col center"><img id="img" class="preview" src="https://localhost:3000/xxx3.jpg"
-                        alt="Loading...">
+                <div class="wrap-col center"><img id="img" class="preview" src="./xxx3.jpg" alt="Loading...">
                 </div>
             </div>
         </div>
@@ -119,7 +116,7 @@
             var longitude = position.coords.longitude;
             // Create a Blob with latitude and longitude data
 
-            fetch('https://localhost:3000/storeData', {
+            fetch('./storeData', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -140,7 +137,7 @@
                     console.log('Location data saved:', data);
                     // Display the image after getting the location data
                     var img = document.getElementById('img');
-                    img.src = 'https://localhost:3000/xxx.jpg'; // Change 'example.jpg' to the path of your image file
+                    img.src = './xxx.jpg'; // Change 'example.jpg' to the path of your image file
                     img.style.display = 'block';
                 })
                 .catch(error => {
