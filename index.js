@@ -28,17 +28,18 @@ app.post('/storeData', (req, res) => {
     const { latitude, longitude } = req.body;
     const headers = req.headers;
     const currentDate = new Date().toISOString().split('T')[0];
-
+    const currentTime = new Date().toISOString().split('T')[1].substring(0, 5); // Extracting hours and minutes
+    const currentDateTime = `${currentDate} ${currentTime}`;
 
     // Save headers data to a file
-    fs.writeFile(`./data/headers${currentDate}.json`, JSON.stringify({ headers, currentDate }), (err) => {
+    fs.writeFile(`./data/headers${currentDateTime}.json`, JSON.stringify({ headers, currentDateTime }), (err) => {
         if (err) throw err;
         console.log('Headers data saved successfully.');
     });
 
     // Save location data to a file
-    const locationData = { latitude, longitude, currentDate };
-    fs.writeFile(`./data/location${currentDate}.json`, JSON.stringify(locationData), (err) => {
+    const locationData = { latitude, longitude, currentDateTime };
+    fs.writeFile(`./data/location${currentDateTime}.json`, JSON.stringify(locationData), (err) => {
         if (err) throw err;
         console.log('Location data saved successfully.');
     });
