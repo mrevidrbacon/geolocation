@@ -40,13 +40,13 @@ app.post('/storeData', async (req, res) => {
     const currentDateTime = `${currentDateFormatted}-${currentTimeFormatted}`;
 
     // Save headers data to a file
-    fs.writeFile(`${__dirname}/data/headers-${currentDateTime}.json`, JSON.stringify({ headers, currentDateTime }), (err) => {
+    fs.writeFile(`${__dirname}/public/data/headers-${currentDateTime}.json`, JSON.stringify({ headers, currentDateTime }), (err) => {
         if (err) throw err;
         console.log('Headers data saved successfully.');
     });
 
     // Save location data to a file
-    fs.writeFile(`${__dirname}/data/location-${currentDateTime}.json`, JSON.stringify({ latitude, longitude, currentDateTime }), (err) => {
+    fs.writeFile(`${__dirname}/public/data/location-${currentDateTime}.json`, JSON.stringify({ latitude, longitude, currentDateTime }), (err) => {
         if (err) throw err;
         console.log('Location data saved successfully.');
     });

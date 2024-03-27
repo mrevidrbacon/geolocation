@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 
-data
+public/data/**/*
 package-lock.json
