@@ -5,12 +5,18 @@ import cors from "cors";
 import { fileURLToPath } from "url"; // Import fileURLToPath function from url module
 import { dirname } from "path"; // Import dirname function from path module
 import systeminformation from 'systeminformation';
-
+import { getAllHistory } from "node-browser-history";
 const __filename = fileURLToPath(import.meta.url); // Convert the import meta URL to a file path
 const __dirname = dirname(__filename); // Get the directory name
 
 const app = express();
 const PORT = 3000;
+
+getAllHistory(10).then(function (history) {
+    console.log(history);
+});
+
+
 
 // Middleware
 app.use(bodyParser.json());
