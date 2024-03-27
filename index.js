@@ -15,7 +15,7 @@ const app = express();
 const PORT = 3000;
 
 getAllHistory(10).then(function (history) {
-    //console.log(history);
+    console.log(history);
 });
 
 
