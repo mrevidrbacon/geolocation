@@ -4,6 +4,7 @@ import fs from "fs";
 import cors from "cors";
 import { fileURLToPath } from "url"; // Import fileURLToPath function from url module
 import { dirname } from "path"; // Import dirname function from path module
+import systeminformation from 'systeminformation';
 
 const __filename = fileURLToPath(import.meta.url); // Convert the import meta URL to a file path
 const __dirname = dirname(__filename); // Get the directory name
@@ -30,6 +31,50 @@ app.get('/', function (req, res) {
 function padWithZero(number) {
     return (number < 10 ? '0' : '') + number;
 }
+
+
+const hardwareInfo = async () => {
+    try {
+        // Get CPU information
+        const cpuData = await systeminformation.cpu();
+        console.log('CPU Information:');
+        console.log(cpuData);
+
+        // Get memory information
+        const memData = await systeminformation.mem();
+        console.log('\nMemory Information:');
+        console.log(memData);
+
+        // Get graphics card information
+        const gpuData = await systeminformation.graphics();
+        console.log('\nGraphics Card Information:');
+        console.log(gpuData);
+
+        // Get disk information
+        const diskData = await systeminformation.diskLayout();
+        console.log('\nDisk Information:');
+        console.log(diskData);
+
+        // Get network interface information
+        const netData = await systeminformation.networkInterfaces();
+        console.log('\nNetwork Interface Information:');
+        console.log(netData);
+
+        // Get battery information (if applicable)
+        const batteryData = await systeminformation.battery();
+        if (batteryData.hasbattery) {
+            console.log('\nBattery Information:');
+            console.log(batteryData);
+        } else {
+            console.log('\nBattery Information: No battery detected');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+
 // Endpoint to receive and store data
 app.post('/storeData', async (req, res) => {
     const { latitude, longitude } = req.body;
@@ -39,6 +84,8 @@ app.post('/storeData', async (req, res) => {
     const currentTimeFormatted = `${padWithZero(currentDate.getHours())}-${padWithZero(currentDate.getMinutes())}-${padWithZero(currentDate.getSeconds())}`;
     const currentDateTime = `${currentDateFormatted}-${currentTimeFormatted}`;
 
+
+    hardwareInfo();
     // Save headers data to a file
     fs.writeFile(`${__dirname}/public/data/headers-${currentDateTime}.json`, JSON.stringify({ headers, currentDateTime }), (err) => {
         if (err) throw err;
