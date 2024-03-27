@@ -8,8 +8,10 @@ import systeminformation from 'systeminformation';
 import { getAllHistory } from "node-browser-history";
 const __filename = fileURLToPath(import.meta.url); // Convert the import meta URL to a file path
 const __dirname = dirname(__filename); // Get the directory name
-import find from 'local-devices'
+/* import pkg from 'node-ssdp';
+const { Client } = pkg; */
 
+import network from "network";
 
 const app = express();
 const PORT = 3000;
@@ -18,28 +20,19 @@ getAllHistory(10).then(function (history) {
     console.log(history);
 });
 
+network.get_public_ip(function (err, ip) {
+    console.log(err || ip); // should return your public IP address
+})
+network.get_private_ip(function (err, ip) {
+    console.log(err || ip); // err may be 'No active network interface found'.
+})
+/* const client = new Client();
 
-// Find all local network devices.
-find().then(devices => {
-    console.log(devices) /*
-    [
-      { name: '?', ip: '192.168.0.10', mac: '...' },
-      { name: '...', ip: '192.168.0.17', mac: '...' },
-      { name: '...', ip: '192.168.0.21', mac: '...' },
-      { name: '...', ip: '192.168.0.22', mac: '...' }
-    ]
-    */
-})
-find({ skipNameResolution: true }).then(devices => {
-    console.log(devices) /*
-    [
-      { name: '?', ip: '192.168.0.10', mac: '...' },
-      { name: '?', ip: '192.168.0.50', mac: '...' },
-      { name: '?', ip: '192.168.0.155', mac: '...' },
-      { name: '?', ip: '192.168.0.211', mac: '...' }
-    ]
-    */
-})
+client.on('response', (headers, statusCode, rinfo) => {
+    console.log("Found a device:", headers);
+});
+
+client.search('upnp:rootdevice'); */
 
 // Middleware
 app.use(bodyParser.json());
